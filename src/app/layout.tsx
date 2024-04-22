@@ -4,8 +4,10 @@ import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
+import { Footer } from "@/app/components/footer.tsx"
+import { Header } from "@/app/components/header.tsx"
+
 import { UserProvider } from "@auth0/nextjs-auth0/client"
-import { UserNav } from "./components/user-nav"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,8 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <UserProvider>
-        <UserNav />
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <main>
+            <Header></Header>
+            {children}
+          </main>
+          <Footer></Footer>
+        </body>
       </UserProvider>
     </html>
   )
